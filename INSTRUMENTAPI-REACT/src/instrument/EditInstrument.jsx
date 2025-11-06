@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import axios from "axios";
-import config from "../config";
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./instrument.css";
@@ -36,7 +36,7 @@ export default function EditInstrument({ instrument, onUpdate }) {
     e.preventDefault();
     try {
       const res = await axios.put(
-        `${config.url}/instrument/update/${formData.id}`,
+        `${import.meta.env.VITE_API_URL}/instrument/update/${formData.id}`,
         formData
       );
       toast.success(res.data || "Instrument updated successfully!");

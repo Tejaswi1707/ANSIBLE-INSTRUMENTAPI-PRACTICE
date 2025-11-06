@@ -1,8 +1,6 @@
-
-
 import { useState } from "react";
 import axios from "axios";
-import config from "../config";
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import './instrument.css';
@@ -22,7 +20,7 @@ export default function AddInstrument({ fetchInstruments }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${config.url}/instrument/add`, formData);
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/instrument/add`, formData);
       toast.success(res.data);
       setFormData({ id: "", name: "", type: "", brand: "", price: "" });
       fetchInstruments && fetchInstruments();

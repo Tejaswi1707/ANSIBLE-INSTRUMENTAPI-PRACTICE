@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react";
 import axios from "axios";
-import config from "../config";
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./instrument.css";
@@ -13,7 +13,7 @@ export default function ViewAllInstrument({ onEdit }) {
 
   const fetchInstruments = async () => {
     try {
-      const res = await axios.get(`${config.url}/instrument/viewall`);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/instrument/viewall`);
       setInstruments(res.data);
     } catch (err) {
       setError(err.message);
@@ -26,7 +26,7 @@ export default function ViewAllInstrument({ onEdit }) {
 
   const deleteInstrument = async (id) => {
     try {
-      const res = await axios.delete(`${config.url}/instrument/delete/${id}`);
+      const res = await axios.delete(`${import.meta.env.VITE_API_URL}/instrument/delete/${id}`);
       toast.success(res.data);
       fetchInstruments();
     } catch (err) {
